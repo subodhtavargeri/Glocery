@@ -2,12 +2,12 @@ import Foundation
 @testable import Glocery
 import XCTest
 
-class GloceryInteraactorTests: XCTestCase {
+class GroceryInteraactorTests: XCTestCase {
     
-    func test_GetGloceryDetails_FromService() {
-        let worker = GloceryWorkerSpy()
-        let presenter = GloceryPresenterSpy()
-        let interactor = GloceryInteractor(worker:worker, presenter: presenter)
+    func test_GetGroceryDetails_FromService() {
+        let worker = GroceryWorkerSpy()
+        let presenter = GroceryPresenterSpy()
+        let interactor = GroceryInteractor(worker:worker, presenter: presenter)
         
         interactor.getItemList()
         
@@ -15,10 +15,10 @@ class GloceryInteraactorTests: XCTestCase {
         XCTAssertEqual(interactor.item, expectation)
     }
     
-    func test_GetGloceryDetails_FromService_ViewModelIsCreated() {
-        let worker = GloceryWorkerSpy()
-        let presenter = GloceryPresenterSpy()
-        let interactor = GloceryInteractor(worker:worker, presenter: presenter)
+    func test_GetGroceryDetails_FromService_ViewModelIsCreated() {
+        let worker = GroceryWorkerSpy()
+        let presenter = GroceryPresenterSpy()
+        let interactor = GroceryInteractor(worker:worker, presenter: presenter)
         
         interactor.getItemList()
         
@@ -27,10 +27,10 @@ class GloceryInteraactorTests: XCTestCase {
     }
 }
 
-protocol GloceryPresenterProtocol {
+protocol GroceryPresenterProtocol {
     func getItemListViewModel(dataModel: ItemDataModel)
 }
-class GloceryPresenterSpy: GloceryPresenterProtocol {
+class GroceryPresenterSpy: GroceryPresenterProtocol {
     
     var viewModel: ItemViewModel?
     
@@ -39,9 +39,9 @@ class GloceryPresenterSpy: GloceryPresenterProtocol {
     }
 }
 
-class GloceryInteractor {
-    let worker: GloceryWorkerProtocol?
-    let presenter: GloceryPresenterProtocol?
+class GroceryInteractor {
+    let worker: GroceryWorkerProtocol?
+    let presenter: GroceryPresenterProtocol?
     private(set) var item: ItemDataModel? {
         didSet {
             guard let item = item, item != oldValue else { return }
@@ -49,8 +49,8 @@ class GloceryInteractor {
         }
     }
     
-    init(worker: GloceryWorkerProtocol,
-         presenter: GloceryPresenterProtocol) {
+    init(worker: GroceryWorkerProtocol,
+         presenter: GroceryPresenterProtocol) {
         self.worker = worker
         self.presenter = presenter
     }
@@ -62,12 +62,12 @@ class GloceryInteractor {
     }
 }
 
-protocol GloceryWorkerProtocol {
+protocol GroceryWorkerProtocol {
     typealias completion = (ItemDataModel) -> Void
     func getItemList(onCompletion: completion)
 }
 
-class GloceryWorkerSpy: GloceryWorkerProtocol {
+class GroceryWorkerSpy: GroceryWorkerProtocol {
     func getItemList(onCompletion: completion) {
         let item = ItemDataModel(itemId: 1, itemName: "Sugar", itemPrice: 23)
         onCompletion(item)
