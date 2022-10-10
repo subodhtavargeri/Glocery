@@ -10,7 +10,7 @@ class GloceryInteraactorTests: XCTestCase {
         
         interactor.getItemList()
         
-        let expectation = Item(itemId: 1, itemName: "Sugar", itemPrice: 23)
+        let expectation = ItemDataModel(itemId: 1, itemName: "Sugar", itemPrice: 23)
         XCTAssertEqual(interactor.itemList, expectation)
     }
 }
@@ -18,7 +18,7 @@ class GloceryInteraactorTests: XCTestCase {
 
 class GloceryInteractor {
     let worker: GloceryWorkerProtocol?
-    var itemList: Item?
+    var itemList: ItemDataModel?
     
     init(worker: GloceryWorkerProtocol) {
         self.worker = worker
@@ -26,19 +26,19 @@ class GloceryInteractor {
     
     func getItemList() {
         self.worker?.getItemList(onCompletion: { item in
-            itemList = Item(itemId: item.itemId, itemName: item.itemName, itemPrice: item.itemPrice)
+            itemList = ItemDataModel(itemId: item.itemId, itemName: item.itemName, itemPrice: item.itemPrice)
         })
     }
 }
 
 protocol GloceryWorkerProtocol {
-    typealias completion = (Item) -> Void
+    typealias completion = (ItemDataModel) -> Void
     func getItemList(onCompletion: completion)
 }
 
 class GloceryWorkerSpy: GloceryWorkerProtocol {
     func getItemList(onCompletion: completion) {
-        let item = Item(itemId: 1, itemName: "Sugar", itemPrice: 23)
+        let item = ItemDataModel(itemId: 1, itemName: "Sugar", itemPrice: 23)
         onCompletion(item)
     }
     
