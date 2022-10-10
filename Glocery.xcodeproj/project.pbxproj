@@ -16,6 +16,8 @@
 		5B24FBEB28F3FDB2007CBBD9 /* GloceryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24FBEA28F3FDB2007CBBD9 /* GloceryTests.swift */; };
 		5B24FBF528F3FDB2007CBBD9 /* GloceryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24FBF428F3FDB2007CBBD9 /* GloceryUITests.swift */; };
 		5B24FBF728F3FDB2007CBBD9 /* GloceryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24FBF628F3FDB2007CBBD9 /* GloceryUITestsLaunchTests.swift */; };
+		5B24FC0428F3FE7C007CBBD9 /* GloceryInteraactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24FC0328F3FE7C007CBBD9 /* GloceryInteraactorTests.swift */; };
+		5B24FC0628F3FF10007CBBD9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24FC0528F3FF10007CBBD9 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		5B24FBF028F3FDB2007CBBD9 /* GloceryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GloceryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B24FBF428F3FDB2007CBBD9 /* GloceryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloceryUITests.swift; sourceTree = "<group>"; };
 		5B24FBF628F3FDB2007CBBD9 /* GloceryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloceryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5B24FC0328F3FE7C007CBBD9 /* GloceryInteraactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloceryInteraactorTests.swift; sourceTree = "<group>"; };
+		5B24FC0528F3FF10007CBBD9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 				5B24FBDC28F3FDB2007CBBD9 /* Assets.xcassets */,
 				5B24FBDE28F3FDB2007CBBD9 /* LaunchScreen.storyboard */,
 				5B24FBE128F3FDB2007CBBD9 /* Info.plist */,
+				5B24FC0528F3FF10007CBBD9 /* Item.swift */,
 			);
 			path = Glocery;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				5B24FBEA28F3FDB2007CBBD9 /* GloceryTests.swift */,
+				5B24FC0328F3FE7C007CBBD9 /* GloceryInteraactorTests.swift */,
 			);
 			path = GloceryTests;
 			sourceTree = "<group>";
@@ -259,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B24FBD828F3FDB1007CBBD9 /* ViewController.swift in Sources */,
+				5B24FC0628F3FF10007CBBD9 /* Item.swift in Sources */,
 				5B24FBD428F3FDB1007CBBD9 /* AppDelegate.swift in Sources */,
 				5B24FBD628F3FDB1007CBBD9 /* SceneDelegate.swift in Sources */,
 			);
@@ -268,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B24FC0428F3FE7C007CBBD9 /* GloceryInteraactorTests.swift in Sources */,
 				5B24FBEB28F3FDB2007CBBD9 /* GloceryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
