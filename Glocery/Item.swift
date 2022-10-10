@@ -4,7 +4,7 @@ struct ItemDataModel: Equatable {
     let itemPrice: Double
 }
 
-struct ItemViewModel {
+struct ItemViewModel: Equatable {
     let itemName: String
     let itemPrice: Double
 }

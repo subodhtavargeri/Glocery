@@ -6,27 +6,58 @@ class GloceryInteraactorTests: XCTestCase {
     
     func test_GetGloceryDetails_FromService() {
         let worker = GloceryWorkerSpy()
-        let interactor = GloceryInteractor(worker:worker)
+        let presenter = GloceryPresenterSpy()
+        let interactor = GloceryInteractor(worker:worker, presenter: presenter)
         
         interactor.getItemList()
         
         let expectation = ItemDataModel(itemId: 1, itemName: "Sugar", itemPrice: 23)
-        XCTAssertEqual(interactor.itemList, expectation)
+        XCTAssertEqual(interactor.item, expectation)
+    }
+    
+    func test_GetGloceryDetails_FromService_ViewModelIsCreated() {
+        let worker = GloceryWorkerSpy()
+        let presenter = GloceryPresenterSpy()
+        let interactor = GloceryInteractor(worker:worker, presenter: presenter)
+        
+        interactor.getItemList()
+        
+        let expectation = ItemViewModel(itemName: "Sugar", itemPrice: 23.0)
+        XCTAssertEqual(presenter.viewModel, expectation)
     }
 }
 
+protocol GloceryPresenterProtocol {
+    func getItemListViewModel(dataModel: ItemDataModel)
+}
+class GloceryPresenterSpy: GloceryPresenterProtocol {
+    
+    var viewModel: ItemViewModel?
+    
+    func getItemListViewModel(dataModel: ItemDataModel) {
+        viewModel = ItemViewModel(itemName: dataModel.itemName, itemPrice: dataModel.itemPrice)
+    }
+}
 
 class GloceryInteractor {
     let worker: GloceryWorkerProtocol?
-    var itemList: ItemDataModel?
+    let presenter: GloceryPresenterProtocol?
+    private(set) var item: ItemDataModel? {
+        didSet {
+            guard let item = item, item != oldValue else { return }
+            presenter?.getItemListViewModel(dataModel: item)
+        }
+    }
     
-    init(worker: GloceryWorkerProtocol) {
+    init(worker: GloceryWorkerProtocol,
+         presenter: GloceryPresenterProtocol) {
         self.worker = worker
+        self.presenter = presenter
     }
     
     func getItemList() {
         self.worker?.getItemList(onCompletion: { item in
-            itemList = ItemDataModel(itemId: item.itemId, itemName: item.itemName, itemPrice: item.itemPrice)
+            self.item = ItemDataModel(itemId: item.itemId, itemName: item.itemName, itemPrice: item.itemPrice)
         })
     }
 }
